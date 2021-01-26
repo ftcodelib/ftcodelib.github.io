@@ -17,4 +17,4 @@ include:
   - PULL_REQUEST_TEMPLATE.md
   - img/*
 
-theme: jekyll-theme-slate
+theme: jekyll-theme-tactile
