@@ -1,7 +1,6 @@
 # Welcome to FT.CodeLib
 
-![FTCodeLib](img/ftcodelib_logo.png)
-
 <img src="img/ftcodelib_logo.png"
      alt="FTCodeLib"
+     width="10%"
      style="float: left; margin-right: 10px;" />
