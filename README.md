@@ -1,3 +1,7 @@
 # Welcome to FT.CodeLib
 
 ![FTCodeLib](img/ftcodelib_logo.png)
+
+<img src="markdownmonstericon.png"
+     alt="Markdown Monster icon"
+     style="float: left; margin-right: 10px;" />
