@@ -15,7 +15,7 @@ In this example, we will use HAProxy for us to access the Kibana UI.
 
 First, install the HAProxy into your OS.
 
-```bash
+```
 # For CentOS / Amazon Linux
 sudo yum install haproxy -y
 
@@ -25,7 +25,7 @@ sudo apt install haproxy -y
 
 Once the haproxy installed cd to /etc/haproxy. Follow the following command:
 
-```bash
+```
 cd /etc/haproxy
 mv haproxy.cfg haproxy.cfg.ori
 vi haproxy.cfg
@@ -33,7 +33,7 @@ vi haproxy.cfg
 
 Once you are in the editor, you may follow below configuration. Go to the server* line and change to your Elasticsearch VPC Endpoint accordingly.
 
-```haproxy
+```
 global
     log         127.0.0.1 local2
 
@@ -80,14 +80,14 @@ backend bk_https
 
 Once done you may start the service.
 
-```bash
+```
 systemctl enable haproxy
 systemctl start haproxy
 ```
 
 Once done you may try test the URL by curl the rest api.
 
-```bash
+```
 curl -X GET https://localhost/_cat/health?v
 ```
 
