@@ -16,10 +16,10 @@ cayman-blog:
 theme: # leave it empty
 
 # social
-author: lorepirri
+author: M.Farhan Taib
 image: /image/ftcodelib_logo.png
-twitter:
-  username: lorepirri
+# twitter:
+#   username: 
 
 plugins:
   - jekyll-target-blank
