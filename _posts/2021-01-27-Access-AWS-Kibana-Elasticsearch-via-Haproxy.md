@@ -1,12 +1,37 @@
 ---
 layout: post
 title: Access AWS Elasticsearch Kibana UI via Haproxy + AWS ALB
-published: false
-tags: test markdown blog
+published: true
+tags: AWS Elasticsearch Kibana HAproxy
 ---
 
-##
+If you deploy the AWS Elasticsearch into private network, you might also want the Kibana UI to be reachable on the public network.
 
+There are few ways to archive this. You use either via SSH tunnel or a proxy server such as NGINX and HAproxy.
+
+In this example, we will use HAProxy for us to access the Kibana UI.
+
+## Steps to configure
+
+First, install the HAProxy into your OS.
+
+```bash
+# For CentOS / Amazon Linux
+sudo yum install haproxy -y
+
+# For Ubuntu
+sudo apt install haproxy -y
+```
+
+Once the haproxy installed cd to /etc/haproxy. Follow the following command:
+
+```bash
+cd /etc/haproxy
+mv haproxy.cfg haproxy.cfg.ori
+vi haproxy.cfg
+```
+
+Once you are in the editor, you may follow below configuration. Go to the server* line and change to your Elasticsearch VPC Endpoint accordingly.
 
 ```haproxy
 global
@@ -52,3 +77,18 @@ backend bk_https
         default-server inter 1s
         server s1 vpc-<es_name><random_num>.<region>.es.amazonaws.com:443 check id 1
 ```
+
+Once done you may start the service.
+
+```bash
+systemctl enable haproxy
+systemctl start haproxy
+```
+
+Once done you may try test the URL by curl the rest api.
+
+```bash
+curl -X GET https://localhost/_cat/health?v
+```
+
+Next, you can add your haproxy server into the AWS ALB with SSL termination. The ALB target group health check port you can add 200 and 302. The path would be "/".
